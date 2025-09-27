@@ -4,23 +4,31 @@ let gradientNames = document.getElementById("gradient-names");
 let gradientNamesHTML = [];
 let gradientHTML = [];
 
+// Render color f(x)
+//dogshit code, shud refractor
 function renderColor() {
-  let html = "";
+  let colorHTML = "";
+  let rgbHTML = "";
 
   gradientHTML.forEach((color) => {
-    html += color;
+    colorHTML += color;
   });
 
-  imageGradientSection.innerHTML = html;
+  gradientNamesHTML.forEach((hexValue) => {
+    rgbHTML += hexValue;
+  });
+
+  gradientNames.innerHTML = rgbHTML;
+  imageGradientSection.innerHTML = colorHTML;
 }
 
-// in the past jwang:
-// i was trying to fix the placeholder color stuff but it isn't showing up right
-
-// Render placeholder colors
-fetch("https://www.thecolorapi.com/scheme?hex=F55A5A&format=JSON&mode=triad", {
-  method: "GET",
-})
+//Initial placeholder render
+fetch(
+  "https://www.thecolorapi.com/scheme?hex=F55A5A&format=JSON&mode=monochrome",
+  {
+    method: "GET",
+  }
+)
   .then((response) => response.json())
   .then((data) => {
     data.colors.forEach((color) => {
@@ -30,20 +38,21 @@ fetch("https://www.thecolorapi.com/scheme?hex=F55A5A&format=JSON&mode=triad", {
         `<div class="gradient-element" style="background-color: ${rgb}"></div>`
       );
 
-      gradientNames.innerHTML += `
-          <p>${color.hex.value}</p>
-        `;
+      gradientNamesHTML.push(`<p>${color.hex.value}</p>`);
     });
 
     renderColor();
   });
 
-// Button f, for rendering new colors
+// Get Color Scheme BTN
 getColorBtn.addEventListener("click", (event) => {
   let selectedColor = document.getElementById("root-color").value.slice(1);
+  let selectedScheme = document
+    .getElementById("scheme-dropdown")
+    .value.toLowerCase();
 
   fetch(
-    `https://www.thecolorapi.com/scheme?hex=${selectedColor}&format=JSON&mode=triad`,
+    `https://www.thecolorapi.com/scheme?hex=${selectedColor}&format=JSON&mode=${selectedScheme}`,
     {
       method: "GET",
     }
@@ -60,7 +69,7 @@ getColorBtn.addEventListener("click", (event) => {
           `<div class="gradient-element" style="background-color: ${rgb}"></div>`
         );
 
-        gradientNames.innerHTML.push(`<p>${color.hex.value}</p>`);
+        gradientNamesHTML.push(`<p>${color.hex.value}</p>`);
       });
     });
 
