@@ -1,0 +1,45 @@
+.selection-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  margin: 50px 0 0 0;
+}
+
+.root-color-btn {
+  padding: 10px 20px;
+}
+
+.scheme-dropdown {
+  width: 100px;
+}
+
+.image-gradient {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.gradient-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.gradient-names {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.gradient-names > p {
+  width: 150px;
+  text-align: center;
+}
+
+.gradient-element {
+  /* background: rgb(139, 13, 13); */
+  height: 525px;
+  width: 150px;
+}
