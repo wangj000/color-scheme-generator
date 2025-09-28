@@ -1,13 +1,35 @@
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .selection-container {
   width: 100%;
   display: flex;
   justify-content: center;
-  justify-content: space-around;
+  gap: 185px;
   margin: 50px 0 0 0;
 }
 
+.root-color-btn {
+  background: none;
+  border: none;
+}
+
 .scheme-dropdown {
-  width: 100px;
+  width: 200px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+#get-color-btn {
+  border: 1px solid lightgrey;
+  background: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10px;
 }
 
 .image-gradient {

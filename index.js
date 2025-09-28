@@ -1,6 +1,9 @@
+// DOM Elements
 let imageGradientSection = document.getElementById("gradient-container");
 let getColorBtn = document.getElementById("get-color-btn");
 let gradientNames = document.getElementById("gradient-names");
+
+// HTML Storage
 let gradientNamesHTML = [];
 let gradientHTML = [];
 
